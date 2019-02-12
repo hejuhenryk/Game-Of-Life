@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+}
+
+body {
+    width: 100%;
+}
+
+#game_of_life_grid {
+    display: block;
+    margin: 0 auto;
+    border: solid black 2px;
+ 
+}
+
+h1 {
+    text-align: center;
+}
+
+#menu-buttons {
+    display: flex;
+    margin: 1rem;
+    width: 100vw;
+    justify-content: center;
+}
+#menu-buttons button{
+    border:  solid black 1px;
+    border-radius: 7px;
+    padding: 5px;
+    display: inline-block;
+    margin: 0 1rem;
+    width: 5rem;
+
+
+}
+
