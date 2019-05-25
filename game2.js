@@ -6,10 +6,6 @@ const c = lifeGrid.getContext('2d');
 let s = 20
 
 
-
-
-
-
 let reduceLifeGrid = () => {
     lifeGrid.width = innerWidth * 0.9 - (innerWidth * 0.9 % s)
     lifeGrid.height = innerHeight * 0.8 - (innerHeight * 0.8 % s)
@@ -57,9 +53,7 @@ let game_of_life = () => {
             }
         }
         this.changeState = function(){
-            console.log(this.state)
             this.state = Math.abs(this.state - 1)
-            console.log(this.state)
             calcNextGen()
             printGrid()
         }
@@ -160,6 +154,7 @@ let game_of_life = () => {
     document.querySelector('#btn-next').addEventListener('click', () => {
         nextGen()
         calcNextGen()
+        c.clearRect(0, 0, lifeGrid.width, lifeGrid.height);
         printGrid()
     })
     
@@ -176,11 +171,13 @@ let game_of_life = () => {
     document.querySelector('#btn-random').addEventListener('click', () => {
         randomState()
         calcNextGen()
+        c.clearRect(0, 0, lifeGrid.width, lifeGrid.height);
         printGrid()
     })
      
     document.querySelector('#btn-reset').addEventListener('click', () => {
         reset()
+        c.clearRect(0, 0, lifeGrid.width, lifeGrid.height);
         printGrid()
     })
     let mouseClick = {
@@ -190,12 +187,8 @@ let game_of_life = () => {
     lifeGrid.addEventListener('click' , (e) => {
         const clickCol = Math.floor(e.layerX/s);
         const clickRow = Math.floor(e.layerY/s);
+        c.clearRect(0, 0, lifeGrid.width, lifeGrid.height);
         grid[clickRow][clickCol].changeState()
-    })
-    const slider = document.querySelector('#cel-size')
-    slider.addEventListener('change', () => {
-        
-        console.log(slider.value)
     })
     calcNextGen();
     printGrid();
@@ -206,6 +199,3 @@ game_of_life(s)
 window.addEventListener('resize', () => {
     game_of_life(s)
 })
-
-
-
